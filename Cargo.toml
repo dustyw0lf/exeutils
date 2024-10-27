@@ -3,6 +3,10 @@ name = "exeutils"
 authors = ["dustyw0lf"]
 version = "0.1.0"
 edition = "2021"
+description = "A crate for working with executable formats and shellcode."
+repository = "https://github.com/dustyw0lf/exeutils"
+keywords = ["linux", "windows", "elf", "pe"]
+include = ["src", "Cargo.toml", "README.md"]
 
 [dependencies]
 binary-layout = "4.0.2"
