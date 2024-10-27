@@ -7,8 +7,8 @@
 // region:    --- Modules
 
 #[cfg(feature = "elf64")]
-pub mod elf;
+pub mod elf64;
 #[cfg(feature = "pe64")]
-pub mod pe;
+pub mod pe64;
 
 // endregion: --- Modules
