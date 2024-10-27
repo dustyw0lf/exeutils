@@ -2,7 +2,8 @@
 //! formats and shellcode
 //! # Features
 //!
-//! - `[feature]`: [description].
+//! - `elf64`: Functions for 64-bit ELF executables and shellcode.
+//! - `pef64`: Functions for 64-bit PE executables and shellcode.
 
 // region:    --- Modules
 
