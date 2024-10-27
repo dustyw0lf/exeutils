@@ -6,7 +6,7 @@
 
 // region:    --- Modules
 
-pub mod elf;
-pub mod pe;
+pub mod elf64;
+pub mod pe64;
 
 // endregion: --- Modules

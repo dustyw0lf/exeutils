@@ -152,7 +152,7 @@ mod tests {
     #[test]
     fn test_create_elf() {
         let shellcode = &[0x90, 0x90, 0x90]; // NOP sled
-        let elf = crate::elf::shellcode_to_exe(shellcode);
+        let elf = crate::elf64::shellcode_to_exe(shellcode);
 
         // Verify ELF magic number
         assert_eq!(&elf[0..4], &[0x7f, b'E', b'L', b'F']);

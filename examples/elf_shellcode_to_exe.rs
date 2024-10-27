@@ -3,7 +3,7 @@ use std::fs::{self, File};
 use std::io::Write;
 use std::os::unix::fs::PermissionsExt;
 
-use exeutils::elf;
+use exeutils::elf64;
 
 fn main() {
     let path = current_dir().unwrap();
@@ -15,7 +15,7 @@ fn main() {
 
     let shellcode_bytes = fs::read(shellcode_path).expect("Failed to open file");
 
-    let elf_bytes = elf::shellcode_to_exe(&shellcode_bytes);
+    let elf_bytes = elf64::shellcode_to_exe(&shellcode_bytes);
 
     let elf_path = format!("{}/assets/converted_elf", cwd);
 
