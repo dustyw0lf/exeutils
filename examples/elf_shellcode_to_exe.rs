@@ -15,11 +15,11 @@ fn main() {
 
     let shellcode_bytes = fs::read(shellcode_path).expect("Failed to open file");
 
-    let elf = elf::shellcode_to_exe(&shellcode_bytes);
+    let elf_bytes = elf::shellcode_to_exe(&shellcode_bytes);
 
     let elf_path = format!("{}/assets/converted_elf", cwd);
 
     let mut file = File::create(&elf_path).unwrap();
-    file.write_all(&elf).unwrap();
+    file.write_all(&elf_bytes).unwrap();
     fs::set_permissions(&elf_path, fs::Permissions::from_mode(0o755)).unwrap();
 }
