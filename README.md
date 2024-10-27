@@ -10,7 +10,10 @@
 ## Features
 
 ## Examples
-
+Convert ELF shellcode to an executable
+```bash
+cargo run --example elf_shellcode_to_exe
+```
 
 ## Testing
 Run tests
