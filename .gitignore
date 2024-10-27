@@ -1,0 +1,12 @@
+# -- Base
+.*
+!.gitignore
+!.github
+
+# -- VSCode
+!.vscode 
+
+# -- Rust
+target/
+Cargo.lock
+!.cargo/

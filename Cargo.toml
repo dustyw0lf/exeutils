@@ -1,0 +1,8 @@
+[package]
+name = "exeutils"
+authors = ["dustyw0lf"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+binary-layout = "4.0.2"
