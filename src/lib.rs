@@ -1,14 +1,12 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+//! Rust crate for working with executable
+//! formats and shellcode
+//! # Features
+//!
+//! - `[feature]`: [description].
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+// region:    --- Modules
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub mod elf;
+pub mod pe;
+
+// endregion: --- Modules
