@@ -77,3 +77,11 @@ binary_layout!(image_file_header, LittleEndian, {
 });
 
 // endregion: --- PE Header structures
+
+// region:    --- Optional Header structures
+
+// IMAGE_DATA_DIRECTORY
+binary_layout!(image_data_directory, LittleEndian, {
+    virtual_address: DWORD,
+    size: DWORD,
+});
