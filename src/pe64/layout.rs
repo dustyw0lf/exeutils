@@ -53,3 +53,14 @@ binary_layout!(image_dos_header, LittleEndian, {
     e_res2_10: WORD,  // Reserved word
     e_lfanew: LONG,   // File address of new exe header
 });
+
+// endregion: --- DOS Header structures
+
+// region:    --- PE Header structures
+
+// IMAGE_NT_HEADERS64
+binary_layout!(image_nt_headers64, LittleEndian, {
+    signature: DWORD,
+    file_header: image_file_header::NestedView,
+    optional_header: image_optional_header64::NestedView,
+});
