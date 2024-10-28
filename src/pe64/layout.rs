@@ -64,3 +64,16 @@ binary_layout!(image_nt_headers64, LittleEndian, {
     file_header: image_file_header::NestedView,
     optional_header: image_optional_header64::NestedView,
 });
+
+// IMAGE_FILE_HEADER
+binary_layout!(image_file_header, LittleEndian, {
+    machine: WORD,
+    number_of_sections: WORD,
+    time_date_stamp: DWORD,
+    pointer_to_symbol_table: DWORD,
+    number_of_symbols: DWORD,
+    size_of_optional_header: WORD,
+    characteristics: WORD,
+});
+
+// endregion: --- PE Header structures
