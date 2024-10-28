@@ -5,16 +5,25 @@
 use binary_layout::prelude::*;
 
 // Type definitions
+type BYTE = u8;
 type WORD = u16;
 type DWORD = u32;
 type LONG = u32;
+type ULONGLONG = u64;
 
-pub(crate) const E_MAGIC: WORD = 0x5A4D; // "MZ"
+// Constants
+pub(crate) const E_MAGIC: WORD = 0x5A4D; // DOS signature - "MZ"
+pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64-bit)
+pub(crate) const NT_SIGNATURE: DWORD = 0x50450000; // PE signature - "PE\0\0"
+pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
 
+// region:    --- DOS Header structures
+
+// IMAGE_DOS_HEADER
 binary_layout!(image_dos_header, LittleEndian, {
     e_magic: WORD,    // Magic number
     e_cblp: WORD,     // Bytes on last page of file
-    e_cp: WORD,     // Pages in file
+    e_cp: WORD,       // Pages in file
     e_crlc: WORD,     // Relocations
     e_cparhdr: WORD,  // Size of header in paragraphs
     e_minalloc: WORD, // Minimum extra paragraphs needed
