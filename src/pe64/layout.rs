@@ -14,7 +14,7 @@ pub(crate) const E_MAGIC: WORD = 0x5A4D; // "MZ"
 binary_layout!(image_dos_header, LittleEndian, {
     e_magic: WORD,    // Magic number
     e_cblp: WORD,     // Bytes on last page of file
-    e_cpcp: WORD,     // Pages in file
+    e_cp: WORD,     // Pages in file
     e_crlc: WORD,     // Relocations
     e_cparhdr: WORD,  // Size of header in paragraphs
     e_minalloc: WORD, // Minimum extra paragraphs needed
