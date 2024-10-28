@@ -61,6 +61,7 @@ binary_layout!(elf64_hdr, LittleEndian, {
     shstrndx: Elf64_Half,          // Section name string table index
 });
 
+// ELF program header
 binary_layout!(elf64_phdr, LittleEndian, {
     _type: Elf64_Word,
     flags: Elf64_Word,
@@ -72,6 +73,7 @@ binary_layout!(elf64_phdr, LittleEndian, {
     align: Elf64_Xword,
 });
 
+// ELF executable
 binary_layout!(elf64_file, LittleEndian, {
     hdr: elf64_hdr::NestedView,
     phdr: elf64_phdr::NestedView,
