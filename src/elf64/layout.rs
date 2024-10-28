@@ -1,4 +1,8 @@
-//! Binary layout definitions for the ELF64 format structures
+//! Binary layout definitions for the ELF64 format structures.
+//!
+//! Based on the [ELF-64 standard](https://uclibc.org/docs/elf-64-gen.pdf)
+//! and the [x86-64 architecture supplement](https://uclibc.org/docs/psABI-x86_64.pdf)
+//! for the value `EM_X86_64`, specific to x86-64.
 #![allow(non_camel_case_types)]
 
 use binary_layout::prelude::*;
