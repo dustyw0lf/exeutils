@@ -63,14 +63,14 @@ binary_layout!(elf64_hdr, LittleEndian, {
 
 // ELF program header
 binary_layout!(elf64_phdr, LittleEndian, {
-    _type: Elf64_Word,
-    flags: Elf64_Word,
-    offset: Elf64_Off,
-    vaddr: Elf64_Addr,
-    paddr: Elf64_Addr,
-    filesz: Elf64_Xword,
-    memsz: Elf64_Xword,
-    align: Elf64_Xword,
+    _type: Elf64_Word,   // Type of segment
+    flags: Elf64_Word,   // Segment attributes
+    offset: Elf64_Off,   // Offset in file
+    vaddr: Elf64_Addr,   // Virtual address in memory
+    paddr: Elf64_Addr,   // Reserved
+    filesz: Elf64_Xword, // Size of segment in file
+    memsz: Elf64_Xword,  // Size of segment in memory
+    align: Elf64_Xword,  // Alignment of segment
 });
 
 // ELF executable
