@@ -37,20 +37,20 @@ binary_layout!(elf64_ident, LittleEndian, {
 });
 
 binary_layout!(elf64_hdr, LittleEndian, {
-    ident: elf64_ident::NestedView,
-    _type: Elf64_Half,
-    machine: Elf64_Half,
-    version: Elf64_Word,
-    entry: Elf64_Addr,
-    phoff: Elf64_Off,
-    shoff: Elf64_Off,
-    flags: Elf64_Word,
-    ehsize: Elf64_Half,
-    phentsize: Elf64_Half,
-    phnum: Elf64_Half,
-    shentsize: Elf64_Half,
-    shnum: Elf64_Half,
-    shstrndx: Elf64_Half,
+    ident: elf64_ident::NestedView, // ELF identification
+    _type: Elf64_Half,             // Object file type
+    machine: Elf64_Half,           // Machine type
+    version: Elf64_Word,           // Object file version
+    entry: Elf64_Addr,             // Entry point address
+    phoff: Elf64_Off,              // Program header offset
+    shoff: Elf64_Off,              // Section header offse
+    flags: Elf64_Word,             // Processor-specific flags
+    ehsize: Elf64_Half,            // ELF header size
+    phentsize: Elf64_Half,         // Size of program header entry
+    phnum: Elf64_Half,             // Number of program header entries
+    shentsize: Elf64_Half,         // Size of section header entry
+    shnum: Elf64_Half,             // Number of section header entries
+    shstrndx: Elf64_Half,          // Section name string table index
 });
 
 binary_layout!(elf64_phdr, LittleEndian, {
