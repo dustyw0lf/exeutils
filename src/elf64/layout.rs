@@ -29,13 +29,13 @@ pub(crate) const VADDR: u64 = 0x400000;
 
 // Structure definitions
 binary_layout!(elf64_ident, LittleEndian, {
-    mag: [u8; 4],
-    class: u8,
-    data: u8,
-    version: u8,
-    os_abi: u8,
-    abi_version: u8,
-    pad: [u8; 7],
+    mag: [u8; 4],     // File identification
+    class: u8,        // File class
+    data: u8,         // Data encoding
+    version: u8,      // File version
+    os_abi: u8,       // OS/ABI identification
+    abi_version: u8,  // ABI version
+    pad: [u8; 7],     // Start of padding bytes
 });
 
 binary_layout!(elf64_hdr, LittleEndian, {
