@@ -15,3 +15,11 @@ pe64 = []
 
 [dependencies]
 binary-layout = "4.0.2"
+
+# Make examples work just with `cargo run --example <example>`
+[dev-dependencies]
+exeutils = { path = ".", features = ["elf64", "pe64"] }
+
+[[example]]
+name = "elf_shellcode_to_exe"
+required-features = ["elf64"]
