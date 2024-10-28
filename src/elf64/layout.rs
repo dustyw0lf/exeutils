@@ -8,7 +8,9 @@ type Elf64_Addr = u64;
 type Elf64_Off = u64;
 type Elf64_Half = u16;
 type Elf64_Word = u32;
+// type Elf64_Sword = u32;
 type Elf64_Xword = u64;
+// type Elf64_Sxword = u64;
 
 // Constants
 pub(crate) const PROGRAM_OFFSET: u64 = {
