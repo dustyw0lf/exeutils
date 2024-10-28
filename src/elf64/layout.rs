@@ -32,6 +32,7 @@ pub(crate) const PROGRAM_OFFSET: u64 = {
 pub(crate) const VADDR: u64 = 0x400000;
 
 // Structure definitions
+// ELF identification header
 binary_layout!(elf64_ident, LittleEndian, {
     mag: [u8; 4],     // File identification
     class: u8,        // File class
@@ -42,6 +43,7 @@ binary_layout!(elf64_ident, LittleEndian, {
     pad: [u8; 7],     // Start of padding bytes
 });
 
+// ELF file header
 binary_layout!(elf64_hdr, LittleEndian, {
     ident: elf64_ident::NestedView, // ELF identification
     _type: Elf64_Half,             // Object file type
