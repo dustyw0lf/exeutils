@@ -85,3 +85,54 @@ binary_layout!(image_data_directory, LittleEndian, {
     virtual_address: DWORD,
     size: DWORD,
 });
+
+// IMAGE_OPTIONAL_HEADER64
+binary_layout!(image_optional_header64, LittleEndian, {
+    magic: WORD,
+    major_linker_version: BYTE,
+    minor_linker_version: BYTE,
+    size_of_code: DWORD,
+    size_of_initialized_data: DWORD,
+    size_of_uninitialized_data: DWORD,
+    address_of_entry_point: DWORD,
+    base_of_code: DWORD,
+    image_base: ULONGLONG,              // 64-bit value
+    section_alignment: DWORD,
+    file_alignment: DWORD,
+    major_operating_system_version: WORD,
+    minor_operating_system_version: WORD,
+    major_image_version: WORD,
+    minor_image_version: WORD,
+    major_subsystem_version: WORD,
+    minor_subsystem_version: WORD,
+    win32_version_value: DWORD,
+    size_of_image: DWORD,
+    size_of_headers: DWORD,
+    check_sum: DWORD,
+    subsystem: WORD,
+    dll_characteristics: WORD,
+    size_of_stack_reserve: ULONGLONG,   // 64-bit value
+    size_of_stack_commit: ULONGLONG,    // 64-bit value
+    size_of_heap_reserve: ULONGLONG,    // 64-bit value
+    size_of_heap_commit: ULONGLONG,     // 64-bit value
+    loader_flags: DWORD,
+    number_of_rva_and_sizes: DWORD,
+    data_directory_1: image_data_directory::NestedView,
+    data_directory_2: image_data_directory::NestedView,
+    data_directory_3: image_data_directory::NestedView,
+    data_directory_4: image_data_directory::NestedView,
+    data_directory_5: image_data_directory::NestedView,
+    data_directory_6: image_data_directory::NestedView,
+    data_directory_7: image_data_directory::NestedView,
+    data_directory_8: image_data_directory::NestedView,
+    data_directory_9: image_data_directory::NestedView,
+    data_directory_10: image_data_directory::NestedView,
+    data_directory_11: image_data_directory::NestedView,
+    data_directory_12: image_data_directory::NestedView,
+    data_directory_13: image_data_directory::NestedView,
+    data_directory_14: image_data_directory::NestedView,
+    data_directory_15: image_data_directory::NestedView,
+    data_directory_16: image_data_directory::NestedView,
+});
+
+// endregion: --- Optional Header structures
