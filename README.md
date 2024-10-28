@@ -5,7 +5,10 @@
 
 
 ## Usage
-
+Add `exeutils` as a dependency to your Rust project with the required features, e.g., `elf64`
+```bash
+cargo add --git https://github.com/dustyw0lf/exeutils.git --features elf64
+```
 
 ## Features
 
