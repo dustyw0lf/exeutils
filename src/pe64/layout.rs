@@ -12,9 +12,10 @@ type LONG = u32;
 type ULONGLONG = u64;
 
 // Constants
-pub(crate) const E_MAGIC: WORD = 0x5A4D; // DOS signature - "MZ"
+pub(crate) const E_MAGIC: WORD = 0x5A4D; // DOS signature: "MZ"
 pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64-bit)
-pub(crate) const NT_SIGNATURE: DWORD = 0x50450000; // PE signature - "PE\0\0"
+pub(crate) const NT_SIGNATURE: DWORD = 0x50450000; // PE signature: "PE\0\0"
+pub(crate) const IMAGE_FILE_MACHINE_AMD64: DWORD = 0x8664; // Arch: x64
 pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
 
 // region:    --- DOS Header structures
