@@ -5,11 +5,11 @@
 use binary_layout::prelude::*;
 
 // Type definitions
-type BYTE = u8;
-type WORD = u16;
-type DWORD = u32;
-type LONG = u32;
-type ULONGLONG = u64;
+pub(crate) type BYTE = u8;
+pub(crate) type WORD = u16;
+pub(crate) type DWORD = u32;
+pub(crate) type LONG = u32;
+pub(crate) type ULONGLONG = u64;
 
 // region:    --- constants
 
