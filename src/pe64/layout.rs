@@ -27,7 +27,7 @@ pub(crate) const IMAGE_FILE_MACHINE_AMD64: WORD = 0x8664; // Arch: x64
 pub(crate) const IMAGE_FILE_EXECUTABLE_IMAGE: WORD = 0x0002; // Executable
 
 // IMAGE_OPTIONAL_HEADER64 constants
-pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
+// pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
 
 // endregion: --- constants
 
