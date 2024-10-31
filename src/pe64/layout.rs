@@ -27,6 +27,10 @@ pub(crate) const IMAGE_FILE_MACHINE_AMD64: WORD = 0x8664; // Arch: x64
 pub(crate) const IMAGE_FILE_EXECUTABLE_IMAGE: WORD = 0x0002; // Executable
 
 // IMAGE_OPTIONAL_HEADER64 constants
+pub(crate) const IMAGE_BASE: ULONGLONG = 0x400000; // Default value for applications
+pub(crate) const MAJOR_SUBSYSTEM_VERSION: WORD = 4; // NT 4 or later
+pub(crate) const IMAGE_SUBSYSTEM_WINDOWS_CUI: WORD = 3; // Default value for applications
+
 // pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
 
 // endregion: --- constants
