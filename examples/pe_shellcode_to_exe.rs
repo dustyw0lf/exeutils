@@ -16,7 +16,7 @@ fn main() {
 
     let pe_bytes = pe64::shellcode_to_exe(&shellcode_bytes);
 
-    let pe_path = format!("{}/assets/converted_elf", cwd);
+    let pe_path = format!("{}/assets/converted_exe", cwd);
 
     let mut file = File::create(&pe_path).unwrap();
     file.write_all(&pe_bytes).unwrap();
