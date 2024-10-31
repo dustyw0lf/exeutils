@@ -150,3 +150,10 @@ binary_layout!(image_optional_header64, LittleEndian, {
 });
 
 // endregion: --- Optional Header structures
+
+// PE 64 executable
+binary_layout!(pe64_file, LittleEndian, {
+    dos_header: image_dos_header::NestedView,
+    nt_headers64: image_nt_headers64::NestedView,
+    shellcode: [u8],
+});
