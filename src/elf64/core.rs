@@ -46,10 +46,13 @@ fn set_elf64_phdr<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: elf64_phdr::View<S>, p
 pub fn shellcode_to_exe(shellcode: &[u8]) -> Vec<u8> {
     let hdr_sz = elf64_hdr::SIZE.unwrap();
     let phdr_sz = elf64_phdr::SIZE.unwrap();
+
     let mut buf = vec![0u8; hdr_sz + phdr_sz + shellcode.len()];
+
     let mut file = elf64_file::View::new(&mut buf);
     set_elf64_hdr(file.hdr_mut());
     set_elf64_phdr(file.phdr_mut(), shellcode.len() as u64);
     file.program_mut().copy_from_slice(shellcode);
+
     buf
 }
