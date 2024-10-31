@@ -27,10 +27,7 @@ fn set_elf64_hdr<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: elf64_hdr::View<S>) {
 }
 
 /// Sets up the ELF64 program header
-fn set_elf64_phdr<S>(mut view: elf64_phdr::View<S>, program_size: u64)
-where
-    S: AsRef<[u8]> + AsMut<[u8]>,
-{
+fn set_elf64_phdr<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: elf64_phdr::View<S>, program_size: u64) {
     view._type_mut().write(1); // PT_LOAD
     view.flags_mut().write(0x1 | 0x2 | 0x4); // PF_X | PF_W | PF_R
 
