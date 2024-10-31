@@ -36,7 +36,16 @@ fn set_image_optional_header64<S: AsRef<[u8]> + AsMut<[u8]>>(
     view.subsystem_mut().write(3); // CLI
 }
 
-#[allow(unused_variables)]
 pub fn shellcode_to_exe(shellcode: &[u8]) -> Vec<u8> {
-    todo!();
+    let dos_header_sz = image_dos_header::SIZE.unwrap();
+    let nt_headers64_sz = image_nt_headers64::SIZE.unwrap();
+
+    let mut buf = vec![0u8; dos_header_sz + nt_headers64_sz + shellcode.len()];
+
+    let mut file = pe64_file::View::new(&mut buf);
+    set_image_dos_header(file.dos_header_mut());
+    set_image_nt_headers64(file.nt_headers64_mut());
+    file.shellcode_mut().copy_from_slice(shellcode);
+
+    buf
 }
