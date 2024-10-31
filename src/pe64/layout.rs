@@ -11,12 +11,25 @@ type DWORD = u32;
 type LONG = u32;
 type ULONGLONG = u64;
 
-// Constants
+// region:    --- constants
+
+// IMAGE_DOS_HEADER constants
 pub(crate) const E_MAGIC: WORD = 0x5A4D; // DOS signature: "MZ"
+
+// IMAGE_OPTIONAL_HEADER32 constants
 pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64-bit)
-pub(crate) const NT_SIGNATURE: DWORD = 0x50450000; // PE signature: "PE\0\0"
+
+// IMAGE_NT_HEADERS64 constans
+pub(crate) const SIGNATURE: DWORD = 0x50450000; // PE signature: "PE\0\0"
+
+// IMAGE_FILE_HEADER constants
 pub(crate) const IMAGE_FILE_MACHINE_AMD64: WORD = 0x8664; // Arch: x64
+pub(crate) const IMAGE_FILE_EXECUTABLE_IMAGE: WORD = 0x0002; // Executable
+
+// IMAGE_OPTIONAL_HEADER64 constants
 pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
+
+// endregion: --- constants
 
 // region:    --- DOS Header structures
 

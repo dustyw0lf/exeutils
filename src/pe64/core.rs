@@ -9,14 +9,14 @@ fn set_image_dos_header<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: image_dos_header
 
 /// Sets up the IMAGE_NT_HEADERS64 header
 fn set_image_nt_headers64<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: image_nt_headers64::View<S>) {
-    view.signature_mut().write(NT_SIGNATURE);
+    view.signature_mut().write(SIGNATURE);
     set_image_file_header(view.file_header_mut());
     set_image_optional_header64(view.optional_header_mut());
 }
 
 /// Sets up the IMAGE_FILE_HEADER haeder
 fn set_image_file_header<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: image_file_header::View<S>) {
-    todo!()
+    view.machine_mut().write(IMAGE_FILE_MACHINE_AMD64);
 }
 
 /// Sets up the IMAGE_OPTIONAL_HEADER64 haeder
