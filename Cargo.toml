@@ -23,3 +23,8 @@ exeutils = { path = ".", features = ["elf64", "pe64"] }
 [[example]]
 name = "elf_shellcode_to_exe"
 required-features = ["elf64"]
+
+[lints.clippy]
+enum_glob_use = "deny"
+pedantic = { level = "deny", priority = -1 }
+unwrap_used = "warn"
