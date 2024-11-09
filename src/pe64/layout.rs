@@ -20,7 +20,7 @@ pub(crate) const E_MAGIC: WORD = 0x5A4D; // DOS signature: "MZ"
 pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64-bit)
 
 // IMAGE_NT_HEADERS64 constans
-pub(crate) const SIGNATURE: DWORD = 0x50450000; // PE signature: "PE\0\0"
+pub(crate) const SIGNATURE: DWORD = 0x00004550; // PE signature: "PE\0\0"
 
 // IMAGE_FILE_HEADER constants
 pub(crate) const IMAGE_FILE_MACHINE_AMD64: WORD = 0x8664; // Arch: x64
@@ -28,10 +28,17 @@ pub(crate) const IMAGE_FILE_EXECUTABLE_IMAGE: WORD = 0x0002; // Executable
 
 // IMAGE_OPTIONAL_HEADER64 constants
 pub(crate) const IMAGE_BASE: ULONGLONG = 0x400000; // Default value for applications
-pub(crate) const MAJOR_SUBSYSTEM_VERSION: WORD = 4; // NT 4 or later
+pub(crate) const MAJOR_SUBSYSTEM_VERSION: WORD = 6;
 pub(crate) const IMAGE_SUBSYSTEM_WINDOWS_CUI: WORD = 3; // Default value for applications
 
-// pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
+pub(crate) const IMAGE_NUMBER_OF_DIRECTORY_ENTRIES: usize = 16;
+pub(crate) const SECTION_ALIGNMENT: DWORD = 0x1000; // Default section alignment
+pub(crate) const FILE_ALIGNMENT: DWORD = 0x200; // Default file alignment
+
+pub(crate) const IMAGE_SCN_MEM_EXECUTE: DWORD = 0x20000000;
+pub(crate) const IMAGE_SCN_MEM_READ: DWORD = 0x40000000;
+pub(crate) const IMAGE_SCN_MEM_WRITE: DWORD = 0x80000000;
+pub(crate) const IMAGE_SCN_CNT_CODE: DWORD = 0x00000020;
 
 // endregion: --- constants
 
