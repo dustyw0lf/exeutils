@@ -2,7 +2,12 @@
 `exeutils` is a Rust crate for working with executable formats and shellcode.
 
 ## Functionality
-
+| Format | Source | Destination | Implemented |
+|--------|--------|-------------|-------------|
+| ELF64  | Shellcode | Executable | ✔️ |
+| ELF32  | Shellcode | Executable | ❌ |
+| PE64   | Shellcode | Executable | ✔️ |
+| PE32   | Shellcode | Executable | ❌ |
 
 ## Usage
 Add `exeutils` as a dependency to your Rust project with the required features, e.g., `elf64`
@@ -11,6 +16,7 @@ cargo add --git https://github.com/dustyw0lf/exeutils.git --features elf64
 ```
 
 ## Features
+
 
 ## Examples
 Convert ELF shellcode to an executable
