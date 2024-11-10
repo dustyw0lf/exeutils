@@ -56,3 +56,10 @@ binary_layout!(image_optional_header32, LittleEndian, {
     clr_runtime_header: image_data_directory::NestedView,
     reserved: image_data_directory::NestedView,
 });
+
+// IMAGE_NT_HEADERS32
+binary_layout!(image_nt_headers32, LittleEndian, {
+    signature: DWORD,                               // PE signature "PE\0\0"
+    file_header: image_file_header::NestedView,     // File header
+    optional_header: image_optional_header64::NestedView, // Optional header (PE32+)
+});
