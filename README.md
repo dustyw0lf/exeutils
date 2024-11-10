@@ -5,7 +5,7 @@
 `exeutils` the following conversion operations:
 
 | Format | Source | Destination | Implemented |
-|--------|--------|-------------|-------------|
+|--------|--------|-------------|:-----------:|
 | ELF64  | Shellcode | Executable | :heavy_check_mark: |
 | ELF32  | Shellcode | Executable | :x: |
 | PE64   | Shellcode | Executable | :heavy_check_mark: |
