@@ -7,6 +7,6 @@ mod pe32;
 mod pe64;
 
 #[cfg(feature = "pe32")]
-pub use pe32::shellcode_to_exe as pe32_shellcode_to_exe;
+pub use pe32::shellcode_to_exe;
 #[cfg(feature = "pe64")]
-pub use pe64::shellcode_to_exe as pe64_shellcode_to_exe;
+pub use pe64::shellcode_to_exe;
