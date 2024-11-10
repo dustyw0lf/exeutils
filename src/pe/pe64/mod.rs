@@ -1,4 +1,5 @@
-//! Tools and definitions for working with the PE64 format
+//! Types, constants, structures, and functions for working with the PE64 format
+
 use super::common::core as common_core;
 use super::common::layout as common_layout;
 
