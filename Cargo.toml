@@ -19,7 +19,7 @@ binary-layout = "4.0.2"
 
 # Make examples work just with `cargo run --example <example>`
 [dev-dependencies]
-exeutils = { path = ".", features = ["elf64", "pe64"] }
+exeutils = { path = ".", features = ["elf64", "pe32", "pe64"] }
 
 [lints.clippy]
 enum_glob_use = "deny"
