@@ -16,7 +16,7 @@ fn main() {
 
     let pe_bytes = pe32::shellcode_to_exe(&shellcode_bytes);
 
-    let pe_path = format!("{}/assets/converted.exe", cwd);
+    let pe_path = format!("{}/assets/converted_x86.exe", cwd);
 
     let mut file = File::create(&pe_path).unwrap();
     file.write_all(&pe_bytes).unwrap();
