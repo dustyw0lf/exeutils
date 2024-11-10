@@ -86,3 +86,21 @@ pub(crate) fn set_image_section_header<S: AsRef<[u8]> + AsMut<[u8]>>(
         IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE | IMAGE_SCN_CNT_CODE,
     );
 }
+
+/// Sets up the IMAGE_FILE_HEADER
+pub(crate) fn set_image_file_header<S: AsRef<[u8]> + AsMut<[u8]>>(
+    mut view: image_file_header::View<S>,
+    machine: WORD,
+    num_of_sections: WORD,
+    size_of_optional_header: WORD,
+) {
+    view.machine_mut().write(machine);
+    view.number_of_sections_mut().write(num_of_sections);
+    view.time_date_stamp_mut().write(0);
+    view.pointer_to_symbol_table_mut().write(0);
+    view.number_of_symbols_mut().write(0);
+    view.size_of_optional_header_mut()
+        .write(size_of_optional_header);
+    view.characteristics_mut()
+        .write(IMAGE_FILE_EXECUTABLE_IMAGE);
+}

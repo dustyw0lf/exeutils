@@ -76,6 +76,7 @@ fn set_image_nt_headers32<S: AsRef<[u8]> + AsMut<[u8]>>(
         view.file_header_mut(),
         IMAGE_NT_OPTIONAL_HDR32_MAGIC,
         num_of_sections,
+        image_optional_header32::SIZE.unwrap() as WORD,
     );
     set_image_optional_header32(
         view.optional_header_mut(),
