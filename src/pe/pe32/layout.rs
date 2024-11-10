@@ -1,3 +1,10 @@
+//! Binary layout definitions for the PE32 format structures.
+
+// IMAGE_OPTIONAL_HEADER32 constants
+pub(crate) const IMAGE_NT_OPTIONAL_HDR32_MAGIC: WORD = 0x10b;
+
+pub(crate) const IMAGE_BASE: DWORD = 0x400000; // Default value for applications
+
 // IMAGE_OPTIONAL_HEADER32
 binary_layout!(image_optional_header32, LittleEndian, {
     magic: WORD,
