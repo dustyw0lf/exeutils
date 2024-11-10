@@ -2,13 +2,7 @@
 `exeutils` is a Rust crate for working with executable formats and shellcode.
 
 ## Functionality
-`exeutils` supports the following conversion operations:
-
-ELF64:
-- From shellcode to executable.
-
-PE64:
-- From shellcode to executable.
+`exeutils` currently supports converting 64-bit ELF and PE shellcode to an executable.
 
 ## Usage
 Add `exeutils` as a dependency to your Rust project with the required features, e.g., `elf64`
