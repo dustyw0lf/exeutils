@@ -11,6 +11,7 @@ include = ["src", "Cargo.toml", "README.md"]
 [features]
 default = []
 elf64 = []
+pe32 = []
 pe64 = []
 
 [dependencies]
