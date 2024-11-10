@@ -1,5 +1,8 @@
 //! Binary layout definitions for the PE32 format structures.
 
+// IMAGE_FILE_HEADER constant
+pub(crate) const IMAGE_FILE_MACHINE_I386: WORD = 0x014c; // Arch: x86
+
 // IMAGE_OPTIONAL_HEADER32 constants
 pub(crate) const IMAGE_NT_OPTIONAL_HDR32_MAGIC: WORD = 0x10b;
 

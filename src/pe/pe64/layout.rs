@@ -11,6 +11,9 @@ pub(crate) type ULONGLONG = u64;
 
 // region:    --- constants
 
+// IMAGE_FILE_HEADER constant
+pub(crate) const IMAGE_FILE_MACHINE_AMD64: WORD = 0x8664; // Arch: x64
+
 // IMAGE_OPTIONAL_HEADER64 constants
 pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64-bit)
 

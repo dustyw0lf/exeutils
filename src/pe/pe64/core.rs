@@ -7,9 +7,10 @@ use crate::pe64::common_layout::*;
 /// Sets up the IMAGE_FILE_HEADER
 fn set_image_file_header<S: AsRef<[u8]> + AsMut<[u8]>>(
     mut view: image_file_header::View<S>,
+    machine: WORD,
     num_of_sections: WORD,
 ) {
-    view.machine_mut().write(IMAGE_FILE_MACHINE_AMD64);
+    view.machine_mut().write(machine);
     view.number_of_sections_mut().write(num_of_sections);
     view.time_date_stamp_mut().write(0);
     view.pointer_to_symbol_table_mut().write(0);
@@ -88,7 +89,11 @@ fn set_image_nt_headers64<S: AsRef<[u8]> + AsMut<[u8]>>(
     size_of_image: DWORD,
 ) {
     view.signature_mut().write(SIGNATURE);
-    set_image_file_header(view.file_header_mut(), num_of_sections);
+    set_image_file_header(
+        view.file_header_mut(),
+        IMAGE_FILE_MACHINE_AMD64,
+        num_of_sections,
+    );
     set_image_optional_header64(
         view.optional_header_mut(),
         code_size,

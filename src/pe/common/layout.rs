@@ -19,7 +19,6 @@ pub(crate) const E_MAGIC: WORD = 0x5A4D; // DOS signature: "MZ"
 pub(crate) const SIGNATURE: DWORD = 0x00004550; // PE signature: "PE\0\0"
 
 // IMAGE_FILE_HEADER constants
-pub(crate) const IMAGE_FILE_MACHINE_AMD64: WORD = 0x8664; // Arch: x64
 pub(crate) const IMAGE_FILE_EXECUTABLE_IMAGE: WORD = 0x0002; // Executable
 
 // IMAGE_OPTIONAL_HEADER32 constants
