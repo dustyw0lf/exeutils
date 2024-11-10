@@ -178,21 +178,58 @@ fn set_image_section_header<S: AsRef<[u8]> + AsMut<[u8]>>(
     );
 }
 
+/// Converts shellcode into a PE64 executable
 pub fn shellcode_to_exe(shellcode: &[u8]) -> Vec<u8> {
-    let dos_header_size = image_dos_header::SIZE.unwrap();
-    let nt_headers64_size = image_nt_headers64::SIZE.unwrap();
-    let headers_size = (image_dos_header::e_lfanew::SIZE.unwrap()
-        + 4
-        + image_file_header::SIZE.unwrap()
-        + image_optional_header64::SIZE.unwrap()) as DWORD;
+    // Calculate PE header sizes
+    let dos_hdr_size = image_dos_header::SIZE.unwrap() as DWORD;
+    let dos_stub_size = image_dos_stub::SIZE.unwrap() as DWORD;
+    let nt_hdrs_size = image_nt_headers64::SIZE.unwrap() as DWORD;
+    let shellcode_size = shellcode.len() as DWORD;
+    let total_size = dos_hdr_size + dos_stub_size + nt_hdrs_size + shellcode_size;
 
-    let mut buf = vec![0u8; dos_header_size + nt_headers64_size + shellcode.len()];
-    let image_size = buf.len() as DWORD;
+    let section_hdr_size = image_section_header::SIZE.unwrap() as DWORD;
+    let headers_size = dos_hdr_size + dos_stub_size + nt_hdrs_size + section_hdr_size;
 
-    let mut file = pe64_file::View::new(&mut buf);
-    set_image_dos_header(file.dos_header_mut(), dos_header_size as DWORD);
-    set_image_nt_headers64(file.nt_headers64_mut(), image_size, headers_size);
-    file.shellcode_mut().copy_from_slice(shellcode);
+    // Calculate offsets
+    let lfanew_offset = (dos_hdr_size + dos_stub_size) as LONG;
+
+    let section_alignment = 0x1000;
+    let size_of_image: DWORD = if shellcode_size % section_alignment == 0 {
+        0x1000 + shellcode_size
+    } else {
+        0x1000 + ((shellcode_size / section_alignment + 1) * section_alignment)
+    };
+
+    // Create padding buffer
+    let section_padding = 0x400 - headers_size;
+
+    // Create a buffer to hold the PE content
+    let mut buf = vec![0u8; total_size as usize];
+
+    // Create the PE headers structures
+    let mut pe_headers = pe64_headers::View::new(&mut buf);
+    set_image_dos_header(pe_headers.dos_header_mut(), lfanew_offset);
+    set_image_dos_stub(pe_headers.dos_stub_mut());
+    set_image_nt_headers64(
+        pe_headers.nt_headers_mut(),
+        1,
+        shellcode_size,
+        0x1000,
+        size_of_image,
+    );
+    set_image_section_header(
+        pe_headers.text_section_mut(),
+        ".text",
+        shellcode_size,
+        0x1000,
+        shellcode_size,
+    );
+
+    // Extend the buffer with padding to align to the next section
+    buf.resize((headers_size + section_padding) as usize, 0);
+
+    // Append the shellcode at the end of the buffer
+    buf.extend(shellcode);
 
     buf
 }
