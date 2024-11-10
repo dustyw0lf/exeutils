@@ -2,14 +2,14 @@
 `exeutils` is a Rust crate for working with executable formats and shellcode.
 
 ## Functionality
-`exeutils` the following conversion operations:
+`exeutils` supports the following conversion operations:
 
-| Format | Source | Destination | Implemented |
-|--------|--------|-------------|:-----------:|
-| ELF64  | Shellcode | Executable | :heavy_check_mark: |
-| ELF32  | Shellcode | Executable | :x: |
-| PE64   | Shellcode | Executable | :heavy_check_mark: |
-| PE32   | Shellcode | Executable | :x: |
+| Conversion | Implemented |
+|:----------:|:-----------:|
+| Shellcode → PE64  | :heavy_check_mark: |
+| Shellcode → ELF32 | :x: |
+| Shellcode → PE64  | :heavy_check_mark: |
+| Shellcode → PE32  | :x: |
 
 ## Usage
 Add `exeutils` as a dependency to your Rust project with the required features, e.g., `elf64`
