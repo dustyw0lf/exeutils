@@ -6,12 +6,12 @@
 
 <div align="center">
 
-| Conversion | Implemented |
-|------------|:-----------:|
-| Shellcode → PE64  | :heavy_check_mark: |
-| Shellcode → ELF32 | :x: |
-| Shellcode → PE64  | :heavy_check_mark: |
-| Shellcode → PE32  | :x: |
+| Format | From      | To         | Implemented        |
+|--------|-----------|------------|:------------------:|
+| ELF64  | Shellcode | Executable | :heavy_check_mark: |
+| ELF32  | Shellcode | Executable | :x:                |
+| PE64   | Shellcode | Executable | :heavy_check_mark: |
+| PE32   | Shellcode | Executable | :x:                |
 
 </div>
 
