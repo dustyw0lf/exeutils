@@ -153,6 +153,30 @@ fn set_image_nt_headers64<S: AsRef<[u8]> + AsMut<[u8]>>(
         size_of_image,
     );
 }
+/// Sets up the IMAGE_SECTION_HEADER
+fn set_image_section_header<S: AsRef<[u8]> + AsMut<[u8]>>(
+    mut view: image_section_header::View<S>,
+    section: &str,
+    virtual_size: DWORD,
+    virtual_address: DWORD,
+    size_of_raw_data: DWORD,
+) {
+    let len = section.len().min(8);
+    let section = section.as_bytes();
+
+    view.name_mut()[..len].copy_from_slice(&section[..len]);
+    view.virtual_size_mut().write(virtual_size);
+    view.virtual_address_mut().write(virtual_address);
+    view.size_of_raw_data_mut().write(size_of_raw_data);
+    view.pointer_to_raw_data_mut().write(0x400); //
+    view.pointer_to_relocations_mut().write(0);
+    view.pointer_to_linenumbers_mut().write(0);
+    view.number_of_relocations_mut().write(0);
+    view.number_of_linenumbers_mut().write(0);
+    view.characteristics_mut().write(
+        IMAGE_SCN_MEM_EXECUTE | IMAGE_SCN_MEM_READ | IMAGE_SCN_MEM_WRITE | IMAGE_SCN_CNT_CODE,
+    );
+}
 
 /// Sets up the IMAGE_FILE_HEADER haeder
 fn set_image_file_header<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: image_file_header::View<S>) {

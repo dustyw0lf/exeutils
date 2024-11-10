@@ -160,6 +160,20 @@ binary_layout!(image_nt_headers64, LittleEndian, {
     optional_header: image_optional_header64::NestedView, // Optional header (PE32+)
 });
 
+// IMAGE_SECTION_HEADER
+binary_layout!(image_section_header, LittleEndian, {
+    name: [BYTE; 8],
+    virtual_size: DWORD,             // Size of section in memory
+    virtual_address: DWORD,          // RVA of section in memory
+    size_of_raw_data: DWORD,         // Size of initialized data
+    pointer_to_raw_data: DWORD,
+    pointer_to_relocations: DWORD,
+    pointer_to_linenumbers: DWORD,
+    number_of_relocations: WORD,
+    number_of_linenumbers: WORD,
+    characteristics: DWORD,          // Flags describing section
+});
+
 // PE 64 executable
 binary_layout!(pe64_file, LittleEndian, {
     dos_header: image_dos_header::NestedView,
