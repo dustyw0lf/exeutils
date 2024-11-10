@@ -26,15 +26,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug example 'elf_shellcode_to_exe'",
+            "name": "Debug example 'elf64_shellcode_to_exe'",
             "cargo": {
                 "args": [
                     "build",
-                    "--example=elf_shellcode_to_exe",
+                    "--example=elf64_shellcode_to_exe",
                     "--package=exeutils"
                 ],
                 "filter": {
-                    "name": "elf_shellcode_to_exe",
+                    "name": "elf64_shellcode_to_exe",
                     "kind": "example"
                 }
             },
@@ -44,16 +44,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in example 'elf_shellcode_to_exe'",
+            "name": "Debug unit tests in example 'elf64_shellcode_to_exe'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--example=elf_shellcode_to_exe",
+                    "--example=elf64_shellcode_to_exe",
                     "--package=exeutils"
                 ],
                 "filter": {
-                    "name": "elf_shellcode_to_exe",
+                    "name": "elf64_shellcode_to_exe",
                     "kind": "example"
                 }
             },
@@ -63,15 +63,15 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug example 'pe_shellcode_to_exe'",
+            "name": "Debug example 'pe32_shellcode_to_exe'",
             "cargo": {
                 "args": [
                     "build",
-                    "--example=pe_shellcode_to_exe",
+                    "--example=pe32_shellcode_to_exe",
                     "--package=exeutils"
                 ],
                 "filter": {
-                    "name": "pe_shellcode_to_exe",
+                    "name": "pe32_shellcode_to_exe",
                     "kind": "example"
                 }
             },
@@ -81,16 +81,53 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug unit tests in example 'pe_shellcode_to_exe'",
+            "name": "Debug unit tests in example 'pe32_shellcode_to_exe'",
             "cargo": {
                 "args": [
                     "test",
                     "--no-run",
-                    "--example=pe_shellcode_to_exe",
+                    "--example=pe32_shellcode_to_exe",
                     "--package=exeutils"
                 ],
                 "filter": {
-                    "name": "pe_shellcode_to_exe",
+                    "name": "pe32_shellcode_to_exe",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'pe64_shellcode_to_exe'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=pe64_shellcode_to_exe",
+                    "--package=exeutils"
+                ],
+                "filter": {
+                    "name": "pe64_shellcode_to_exe",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'pe64_shellcode_to_exe'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=pe64_shellcode_to_exe",
+                    "--package=exeutils"
+                ],
+                "filter": {
+                    "name": "pe64_shellcode_to_exe",
                     "kind": "example"
                 }
             },
