@@ -4,16 +4,11 @@
 ## Functionality
 `exeutils` supports the following conversion operations:
 
-<div align="center">
+ELF64:
+- From shellcode to executable.
 
-| Format | From      | To         | Implemented        |
-|--------|-----------|------------|:------------------:|
-| ELF64  | Shellcode | Executable | :heavy_check_mark: |
-| ELF32  | Shellcode | Executable | :x:                |
-| PE64   | Shellcode | Executable | :heavy_check_mark: |
-| PE32   | Shellcode | Executable | :x:                |
-
-</div>
+PE64:
+- From shellcode to executable.
 
 ## Usage
 Add `exeutils` as a dependency to your Rust project with the required features, e.g., `elf64`
