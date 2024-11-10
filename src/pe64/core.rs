@@ -47,6 +47,14 @@ fn set_image_dos_header<S: AsRef<[u8]> + AsMut<[u8]>>(
     view.e_lfanew_mut().write(offset); // File address of new exe header
 }
 
+/// Sets up the IMAGE_DOS_STUB
+fn set_image_dos_stub<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: image_dos_stub::View<S>) {
+    let dos_msg = b"This program cannot be run in DOS mode.";
+    let len = dos_msg.len().min(64);
+
+    view.data_mut()[..len].copy_from_slice(&dos_msg[..len]);
+}
+
 /// Sets up the IMAGE_NT_HEADERS64 header
 fn set_image_nt_headers64<S: AsRef<[u8]> + AsMut<[u8]>>(
     mut view: image_nt_headers64::View<S>,

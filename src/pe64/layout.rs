@@ -81,6 +81,11 @@ binary_layout!(image_dos_header, LittleEndian, {
 
 // endregion: --- DOS Header structures
 
+// IMAGE_DOS_STUB
+binary_layout!(image_dos_stub, LittleEndian, {
+    data: [BYTE; 64],
+});
+
 // region:    --- PE Header structures
 
 // IMAGE_NT_HEADERS64
