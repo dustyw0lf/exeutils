@@ -12,9 +12,10 @@ pub mod elf64;
 #[cfg(any(feature = "pe32", feature = "pe64"))]
 mod pe;
 
-// Re-export pe64 at the top level
+// Re-export pe32 at the top level
 #[cfg(feature = "pe32")]
 pub use pe::pe32;
 
+// Re-export pe64 at the top level
 #[cfg(feature = "pe64")]
 pub use pe::pe64;
