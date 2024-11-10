@@ -1,4 +1,4 @@
-//! Tools and definitions for working with the ELF64 format
+//! Types, constants, structures, and functions for working with the ELF64 format
 mod core;
 mod layout;
 
