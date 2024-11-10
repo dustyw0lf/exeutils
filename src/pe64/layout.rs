@@ -88,22 +88,22 @@ binary_layout!(image_dos_stub, LittleEndian, {
 
 // region:    --- PE Header structures
 
+// IMAGE_FILE_HEADER
+binary_layout!(image_file_header, LittleEndian, {
+    machine: WORD,                    // Target machine architecture
+    number_of_sections: WORD,         // Number of sections
+    time_date_stamp: DWORD,           // File creation timestamp
+    pointer_to_symbol_table: DWORD,   // Deprecated, should be 0
+    number_of_symbols: DWORD,         // Deprecated, should be 0
+    size_of_optional_header: WORD,    // Size of the optional header
+    characteristics: WORD,            // Flags indicating file attributes
+});
+
 // IMAGE_NT_HEADERS64
 binary_layout!(image_nt_headers64, LittleEndian, {
     signature: DWORD,
     file_header: image_file_header::NestedView,
     optional_header: image_optional_header64::NestedView,
-});
-
-// IMAGE_FILE_HEADER
-binary_layout!(image_file_header, LittleEndian, {
-    machine: WORD,
-    number_of_sections: WORD,
-    time_date_stamp: DWORD,
-    pointer_to_symbol_table: DWORD,
-    number_of_symbols: DWORD,
-    size_of_optional_header: WORD,
-    characteristics: WORD,
 });
 
 // endregion: --- PE Header structures
