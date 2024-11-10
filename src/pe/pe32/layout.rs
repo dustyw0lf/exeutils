@@ -2,6 +2,8 @@
 
 use binary_layout::prelude::*;
 
+use crate::pe32::common_layout::*;
+
 // IMAGE_FILE_HEADER constant
 pub(crate) const IMAGE_FILE_MACHINE_I386: WORD = 0x014c; // Arch: x86
 
