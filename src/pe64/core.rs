@@ -1,6 +1,4 @@
 //! Core functionality for working with PE64 files
-use binary_layout::Field;
-
 use super::layout::*;
 
 /// Sets up the PE64 IMAGE_DOS_HEADER header
