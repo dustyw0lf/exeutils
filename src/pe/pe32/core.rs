@@ -6,7 +6,7 @@ use crate::pe32::common_layout::*;
 
 /// Sets up the IMAGE_OPTIONAL_HEADER32
 fn set_image_optional_header32<S: AsRef<[u8]> + AsMut<[u8]>>(
-    mut view: image_optional_header64::View<S>,
+    mut view: image_optional_header32::View<S>,
     code_size: DWORD,
     address_of_entry_point: DWORD,
     size_of_image: DWORD,
@@ -61,6 +61,28 @@ fn set_image_optional_header32<S: AsRef<[u8]> + AsMut<[u8]>>(
     set_image_data_directory(view.delay_import_descriptor_mut());
     set_image_data_directory(view.clr_runtime_header_mut());
     set_image_data_directory(view.reserved_mut());
+}
+
+/// Sets up the IMAGE_NT_HEADERS32
+fn set_image_nt_headers32<S: AsRef<[u8]> + AsMut<[u8]>>(
+    mut view: image_nt_headers32::View<S>,
+    num_of_sections: WORD,
+    code_size: DWORD,
+    address_of_entry_point: DWORD,
+    size_of_image: DWORD,
+) {
+    view.signature_mut().write(SIGNATURE);
+    set_image_file_header(
+        view.file_header_mut(),
+        IMAGE_NT_OPTIONAL_HDR32_MAGIC,
+        num_of_sections,
+    );
+    set_image_optional_header32(
+        view.optional_header_mut(),
+        code_size,
+        address_of_entry_point,
+        size_of_image,
+    );
 }
 
 pub fn shellcode_to_exe(shellcode: &[u8]) -> Vec<u8> {
