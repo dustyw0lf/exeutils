@@ -66,16 +66,17 @@ binary_layout!(image_dos_header, LittleEndian, {
     e_res1_4: WORD,   // Reserved word
     e_oemid: WORD,    // OEM identifier (for e_oeminfo)
     e_oeminfo: WORD,  // OEM information; e_oemid specific
-    e_res2_1: WORD,   // Reserved word
-    e_res2_2: WORD,   // Reserved word
-    e_res2_3: WORD,   // Reserved word
-    e_res2_4: WORD,   // Reserved word
-    e_res2_5: WORD,   // Reserved word
-    e_res2_6: WORD,   // Reserved word
-    e_res2_7: WORD,   // Reserved word
-    e_res2_8: WORD,   // Reserved word
-    e_res2_9: WORD,   // Reserved word
-    e_res2_10: WORD,  // Reserved word
+    // Reserved words
+    e_res2_1: WORD,
+    e_res2_2: WORD,
+    e_res2_3: WORD,
+    e_res2_4: WORD,
+    e_res2_5: WORD,
+    e_res2_6: WORD,
+    e_res2_7: WORD,
+    e_res2_8: WORD,
+    e_res2_9: WORD,
+    e_res2_10: WORD,
     e_lfanew: LONG,   // File address of new exe header
 });
 
@@ -86,17 +87,15 @@ binary_layout!(image_dos_stub, LittleEndian, {
     data: [BYTE; 64],
 });
 
-// region:    --- PE Header structures
-
 // IMAGE_FILE_HEADER
 binary_layout!(image_file_header, LittleEndian, {
-    machine: WORD,                    // Target machine architecture
-    number_of_sections: WORD,         // Number of sections
-    time_date_stamp: DWORD,           // File creation timestamp
-    pointer_to_symbol_table: DWORD,   // Deprecated, should be 0
-    number_of_symbols: DWORD,         // Deprecated, should be 0
-    size_of_optional_header: WORD,    // Size of the optional header
-    characteristics: WORD,            // Flags indicating file attributes
+    machine: WORD,
+    number_of_sections: WORD,
+    time_date_stamp: DWORD,
+    pointer_to_symbol_table: DWORD,
+    number_of_symbols: DWORD,
+    size_of_optional_header: WORD,
+    characteristics: WORD,
 });
 
 // IMAGE_DATA_DIRECTORY
@@ -104,17 +103,6 @@ binary_layout!(image_data_directory, LittleEndian, {
     virtual_address: DWORD,          // RVA of the table
     size: DWORD,                     // Size of the table
 });
-
-// IMAGE_NT_HEADERS64
-binary_layout!(image_nt_headers64, LittleEndian, {
-    signature: DWORD,
-    file_header: image_file_header::NestedView,
-    optional_header: image_optional_header64::NestedView,
-});
-
-// endregion: --- PE Header structures
-
-// region:    --- Optional Header structures
 
 // IMAGE_OPTIONAL_HEADER64
 binary_layout!(image_optional_header64, LittleEndian, {
@@ -126,7 +114,7 @@ binary_layout!(image_optional_header64, LittleEndian, {
     size_of_uninitialized_data: DWORD,
     address_of_entry_point: DWORD,
     base_of_code: DWORD,
-    image_base: ULONGLONG,              // 64-bit value
+    image_base: ULONGLONG,
     section_alignment: DWORD,
     file_alignment: DWORD,
     major_operating_system_version: WORD,
@@ -138,34 +126,39 @@ binary_layout!(image_optional_header64, LittleEndian, {
     win32_version_value: DWORD,
     size_of_image: DWORD,
     size_of_headers: DWORD,
-    check_sum: DWORD,
+    checksum: DWORD,
     subsystem: WORD,
     dll_characteristics: WORD,
-    size_of_stack_reserve: ULONGLONG,   // 64-bit value
-    size_of_stack_commit: ULONGLONG,    // 64-bit value
-    size_of_heap_reserve: ULONGLONG,    // 64-bit value
-    size_of_heap_commit: ULONGLONG,     // 64-bit value
+    size_of_stack_reserve: ULONGLONG,
+    size_of_stack_commit: ULONGLONG,
+    size_of_heap_reserve: ULONGLONG,
+    size_of_heap_commit: ULONGLONG,
     loader_flags: DWORD,
     number_of_rva_and_sizes: DWORD,
-    data_directory_1: image_data_directory::NestedView,
-    data_directory_2: image_data_directory::NestedView,
-    data_directory_3: image_data_directory::NestedView,
-    data_directory_4: image_data_directory::NestedView,
-    data_directory_5: image_data_directory::NestedView,
-    data_directory_6: image_data_directory::NestedView,
-    data_directory_7: image_data_directory::NestedView,
-    data_directory_8: image_data_directory::NestedView,
-    data_directory_9: image_data_directory::NestedView,
-    data_directory_10: image_data_directory::NestedView,
-    data_directory_11: image_data_directory::NestedView,
-    data_directory_12: image_data_directory::NestedView,
-    data_directory_13: image_data_directory::NestedView,
-    data_directory_14: image_data_directory::NestedView,
-    data_directory_15: image_data_directory::NestedView,
-    data_directory_16: image_data_directory::NestedView,
+    export_table: image_data_directory::NestedView,
+    import_table: image_data_directory::NestedView,
+    resource_table: image_data_directory::NestedView,
+    exception_table: image_data_directory::NestedView,
+    certificate_table: image_data_directory::NestedView,
+    base_relocation_table: image_data_directory::NestedView,
+    debug: image_data_directory::NestedView,
+    architecture: image_data_directory::NestedView,
+    global_ptr: image_data_directory::NestedView,
+    tls_table: image_data_directory::NestedView,
+    load_config_table: image_data_directory::NestedView,
+    bound_import: image_data_directory::NestedView,
+    iat: image_data_directory::NestedView,
+    delay_import_descriptor: image_data_directory::NestedView,
+    clr_runtime_header: image_data_directory::NestedView,
+    reserved: image_data_directory::NestedView,
 });
 
-// endregion: --- Optional Header structures
+// IMAGE_NT_HEADERS64
+binary_layout!(image_nt_headers64, LittleEndian, {
+    signature: DWORD,
+    file_header: image_file_header::NestedView,
+    optional_header: image_optional_header64::NestedView,
+});
 
 // PE 64 executable
 binary_layout!(pe64_file, LittleEndian, {
