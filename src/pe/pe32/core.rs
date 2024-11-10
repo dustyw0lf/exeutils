@@ -74,7 +74,7 @@ fn set_image_nt_headers32<S: AsRef<[u8]> + AsMut<[u8]>>(
     view.signature_mut().write(SIGNATURE);
     set_image_file_header(
         view.file_header_mut(),
-        IMAGE_NT_OPTIONAL_HDR32_MAGIC,
+        IMAGE_FILE_MACHINE_I386,
         num_of_sections,
         image_optional_header32::SIZE.unwrap() as WORD,
     );
