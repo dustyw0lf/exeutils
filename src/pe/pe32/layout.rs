@@ -1,5 +1,7 @@
 //! Binary layout definitions for the PE32 format structures.
 
+use binary_layout::prelude::*;
+
 // IMAGE_FILE_HEADER constant
 pub(crate) const IMAGE_FILE_MACHINE_I386: WORD = 0x014c; // Arch: x86
 
