@@ -174,9 +174,10 @@ binary_layout!(image_section_header, LittleEndian, {
     characteristics: DWORD,          // Flags describing section
 });
 
-// PE 64 executable
-binary_layout!(pe64_file, LittleEndian, {
+// PE64 headers
+binary_layout!(pe64_headers, LittleEndian, {
     dos_header: image_dos_header::NestedView,
-    nt_headers64: image_nt_headers64::NestedView,
-    shellcode: [u8],
+    dos_stub: image_dos_stub::NestedView,
+    nt_headers: image_nt_headers64::NestedView,
+    text_section: image_section_header::NestedView,
 });
