@@ -11,7 +11,7 @@ pub(crate) type ULONGLONG = u64;
 
 // region:    --- constants
 
-// IMAGE_OPTIONAL_HEADER64 magic number
+// IMAGE_OPTIONAL_HEADER64 constants
 pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64-bit)
 
 pub(crate) const IMAGE_BASE: ULONGLONG = 0x400000; // Default value for applications
