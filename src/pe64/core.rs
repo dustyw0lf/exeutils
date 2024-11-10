@@ -71,6 +71,12 @@ fn set_image_file_header<S: AsRef<[u8]> + AsMut<[u8]>>(
         .write(IMAGE_FILE_EXECUTABLE_IMAGE);
 }
 
+/// Sets up an IMAGE_DATA_DIRECTORY entry
+fn set_image_data_directory<S: AsRef<[u8]> + AsMut<[u8]>>(mut view: image_data_directory::View<S>) {
+    view.virtual_address_mut().write(0); // No special tables
+    view.size_mut().write(0);
+}
+
 /// Sets up the IMAGE_NT_HEADERS64 header
 fn set_image_nt_headers64<S: AsRef<[u8]> + AsMut<[u8]>>(
     mut view: image_nt_headers64::View<S>,
