@@ -1,6 +1,8 @@
 //! Core functionality for working with PE64 files
 use super::layout::*;
 
+use crate::pe64::common_layout::*;
+
 /// Sets up the PE64 IMAGE_DOS_HEADER header
 fn set_image_dos_header<S: AsRef<[u8]> + AsMut<[u8]>>(
     mut view: image_dos_header::View<S>,

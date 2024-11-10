@@ -4,6 +4,8 @@
 
 use binary_layout::prelude::*;
 
+use crate::pe64::common_layout::*;
+
 // Constants
 pub(crate) type ULONGLONG = u64;
 
