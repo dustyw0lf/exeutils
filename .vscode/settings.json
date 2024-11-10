@@ -1,6 +1,7 @@
 {
     "rust-analyzer.cargo.features": [
         "elf64",
+        "pe32",
         "pe64"
     ]
 }
