@@ -5,7 +5,7 @@
 `exeutils` supports the following conversion operations:
 
 | Conversion | Implemented |
-|:----------:|:-----------:|
+|------------|:-----------:|
 | Shellcode → PE64  | :heavy_check_mark: |
 | Shellcode → ELF32 | :x: |
 | Shellcode → PE64  | :heavy_check_mark: |
