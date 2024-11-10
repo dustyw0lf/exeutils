@@ -16,9 +16,6 @@ pub(crate) const IMAGE_NT_OPTIONAL_HDR64_MAGIC: WORD = 0x20B; // PE32+ magic (64
 
 pub(crate) const IMAGE_BASE: ULONGLONG = 0x400000; // Default value for applications
 
-// Version requirements for 64-bit executables
-pub(crate) const MAJOR_SUBSYSTEM_VERSION: WORD = 6; // Windows Vista or later required for 64-bit
-
 // endregion: --- constants
 
 // IMAGE_OPTIONAL_HEADER64

@@ -34,6 +34,8 @@ pub(crate) const IMAGE_SCN_MEM_READ: DWORD = 0x40000000;
 pub(crate) const IMAGE_SCN_MEM_WRITE: DWORD = 0x80000000;
 pub(crate) const IMAGE_SCN_CNT_CODE: DWORD = 0x00000020;
 
+pub(crate) const MAJOR_SUBSYSTEM_VERSION: WORD = 6; // Windows Vista or later required for 64-bit
+
 // endregion: --- constants
 
 // region:    --- DOS Header structures
