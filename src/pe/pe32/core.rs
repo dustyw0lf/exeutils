@@ -87,5 +87,56 @@ fn set_image_nt_headers32<S: AsRef<[u8]> + AsMut<[u8]>>(
 }
 
 pub fn shellcode_to_exe(shellcode: &[u8]) -> Vec<u8> {
-    todo!();
+    // Calculate PE header sizes
+    let dos_hdr_size = image_dos_header::SIZE.unwrap() as DWORD;
+    let dos_stub_size = image_dos_stub::SIZE.unwrap() as DWORD;
+    let nt_hdrs_size = image_nt_headers32::SIZE.unwrap() as DWORD;
+    let shellcode_size = shellcode.len() as DWORD;
+    let total_size = dos_hdr_size + dos_stub_size + nt_hdrs_size + shellcode_size;
+
+    let section_hdr_size = image_section_header::SIZE.unwrap() as DWORD;
+    let headers_size = dos_hdr_size + dos_stub_size + nt_hdrs_size + section_hdr_size;
+
+    // Calculate offsets
+    let lfanew_offset = (dos_hdr_size + dos_stub_size) as LONG;
+
+    let section_alignment = 0x1000;
+    let size_of_image: DWORD = if shellcode_size % section_alignment == 0 {
+        0x1000 + shellcode_size
+    } else {
+        0x1000 + ((shellcode_size / section_alignment + 1) * section_alignment)
+    };
+
+    // Create padding buffer
+    let section_padding = 0x400 - headers_size;
+
+    // Create a buffer to hold the PE content
+    let mut buf = vec![0u8; total_size as usize];
+
+    // Create the PE headers structures
+    let mut pe_headers = pe32_headers::View::new(&mut buf);
+    set_image_dos_header(pe_headers.dos_header_mut(), lfanew_offset);
+    set_image_dos_stub(pe_headers.dos_stub_mut());
+    set_image_nt_headers32(
+        pe_headers.nt_headers_mut(),
+        1,
+        shellcode_size,
+        0x1000,
+        size_of_image,
+    );
+    set_image_section_header(
+        pe_headers.text_section_mut(),
+        ".text",
+        shellcode_size,
+        0x1000,
+        shellcode_size,
+    );
+
+    // Extend the buffer with padding to align to the next section
+    buf.resize((headers_size + section_padding) as usize, 0);
+
+    // Append the shellcode at the end of the buffer
+    buf.extend(shellcode);
+
+    buf
 }
