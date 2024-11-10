@@ -6,10 +6,10 @@
 
 | Format | Source | Destination | Implemented |
 |--------|--------|-------------|-------------|
-| ELF64  | Shellcode | Executable | ✔️ |
-| ELF32  | Shellcode | Executable | ❌ |
-| PE64   | Shellcode | Executable | ✔️ |
-| PE32   | Shellcode | Executable | ❌ |
+| ELF64  | Shellcode | Executable | :heavy_check_mark: |
+| ELF32  | Shellcode | Executable | :x: |
+| PE64   | Shellcode | Executable | :heavy_check_mark: |
+| PE32   | Shellcode | Executable | :x: |
 
 ## Usage
 Add `exeutils` as a dependency to your Rust project with the required features, e.g., `elf64`
