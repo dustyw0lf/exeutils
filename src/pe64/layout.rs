@@ -155,9 +155,9 @@ binary_layout!(image_optional_header64, LittleEndian, {
 
 // IMAGE_NT_HEADERS64
 binary_layout!(image_nt_headers64, LittleEndian, {
-    signature: DWORD,
-    file_header: image_file_header::NestedView,
-    optional_header: image_optional_header64::NestedView,
+    signature: DWORD,                               // PE signature "PE\0\0"
+    file_header: image_file_header::NestedView,     // File header
+    optional_header: image_optional_header64::NestedView, // Optional header (PE32+)
 });
 
 // PE 64 executable

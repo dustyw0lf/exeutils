@@ -136,15 +136,22 @@ fn set_image_optional_header64<S: AsRef<[u8]> + AsMut<[u8]>>(
     set_image_data_directory(view.reserved_mut());
 }
 
-/// Sets up the IMAGE_NT_HEADERS64 header
+/// Sets up the IMAGE_NT_HEADERS64
 fn set_image_nt_headers64<S: AsRef<[u8]> + AsMut<[u8]>>(
     mut view: image_nt_headers64::View<S>,
-    image_size: DWORD,
-    headers_size: DWORD,
+    num_of_sections: WORD,
+    code_size: DWORD,
+    address_of_entry_point: DWORD,
+    size_of_image: DWORD,
 ) {
     view.signature_mut().write(SIGNATURE);
-    set_image_file_header(view.file_header_mut());
-    set_image_optional_header64(view.optional_header_mut(), image_size, headers_size);
+    set_image_file_header(view.file_header_mut(), num_of_sections);
+    set_image_optional_header64(
+        view.optional_header_mut(),
+        code_size,
+        address_of_entry_point,
+        size_of_image,
+    );
 }
 
 /// Sets up the IMAGE_FILE_HEADER haeder
