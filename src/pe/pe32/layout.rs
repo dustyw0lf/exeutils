@@ -63,3 +63,11 @@ binary_layout!(image_nt_headers32, LittleEndian, {
     file_header: image_file_header::NestedView,     // File header
     optional_header: image_optional_header64::NestedView, // Optional header (PE32+)
 });
+
+// PE32 headers
+binary_layout!(pe32_headers, LittleEndian, {
+    dos_header: image_dos_header::NestedView,
+    dos_stub: image_dos_stub::NestedView,
+    nt_headers: image_nt_headers32::NestedView,
+    text_section: image_section_header::NestedView,
+});
