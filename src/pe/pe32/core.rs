@@ -11,7 +11,7 @@ fn set_image_optional_header32<S: AsRef<[u8]> + AsMut<[u8]>>(
     address_of_entry_point: DWORD,
     size_of_image: DWORD,
 ) {
-    view.magic_mut().write(IMAGE_NT_OPTIONAL_HDR64_MAGIC);
+    view.magic_mut().write(IMAGE_NT_OPTIONAL_HDR32_MAGIC);
     view.major_linker_version_mut().write(14);
     view.minor_linker_version_mut().write(16);
     view.size_of_code_mut().write(code_size);
