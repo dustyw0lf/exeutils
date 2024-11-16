@@ -11,9 +11,11 @@ cargo add --git https://github.com/dustyw0lf/exeutils.git --features elf64
 ```
 
 ## Features
-`exeutils` has no features enabled by default. The user should enable one or more of the follwoing:
-- `elf64`: Adds functionality to work with the ELF64 format.
-- `pe64`: Adds functionality to work with the PE64 format.
+`exeutils` has no features enabled by default. The user should enable one or more of the following
+features to enable converting shellcode:
+- `elf64`
+- `pe32`
+- `pe64`
 
 ## Examples
 Convert ELF shellcode to an executable
