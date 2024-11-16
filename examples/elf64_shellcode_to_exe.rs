@@ -17,7 +17,7 @@ fn main() {
 
     let elf_bytes = elf64::shellcode_to_exe(&shellcode_bytes);
 
-    let elf_path = format!("{}/assets/converted_elf", cwd);
+    let elf_path = format!("{}/assets/converted.elf", cwd);
 
     let mut file = File::create(&elf_path).unwrap();
     file.write_all(&elf_bytes).unwrap();
