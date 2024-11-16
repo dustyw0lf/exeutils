@@ -10,7 +10,7 @@ pub(crate) const IMAGE_FILE_MACHINE_I386: WORD = 0x014c; // Arch: x86
 // IMAGE_OPTIONAL_HEADER32 constants
 pub(crate) const IMAGE_NT_OPTIONAL_HDR32_MAGIC: WORD = 0x10b;
 
-pub(crate) const IMAGE_BASE: DWORD = 0x00400000; // Default value for applications
+pub(crate) const IMAGE_BASE: DWORD = 0x400000; // Default value for applications
 
 // IMAGE_OPTIONAL_HEADER32
 binary_layout!(image_optional_header32, LittleEndian, {
@@ -22,6 +22,7 @@ binary_layout!(image_optional_header32, LittleEndian, {
     size_of_uninitialized_data: DWORD,
     address_of_entry_point: DWORD,
     base_of_code: DWORD,
+    base_of_data: DWORD,
     image_base: DWORD,
     section_alignment: DWORD,
     file_alignment: DWORD,

@@ -20,6 +20,7 @@ fn set_image_optional_header32<S: AsRef<[u8]> + AsMut<[u8]>>(
     view.address_of_entry_point_mut()
         .write(address_of_entry_point); // Entry point after headers
     view.base_of_code_mut().write(0x1000);
+    view.base_of_data_mut().write(0x2000);
     view.image_base_mut().write(IMAGE_BASE);
     view.section_alignment_mut().write(SECTION_ALIGNMENT);
     view.file_alignment_mut().write(FILE_ALIGNMENT);
