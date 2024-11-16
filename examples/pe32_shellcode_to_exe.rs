@@ -9,7 +9,7 @@ fn main() {
     let cwd = path.display();
 
     // Shellcode:
-    let shellcode_path = format!("{}/assets/windows-x86.bin", cwd);
+    let shellcode_path = format!("{}/assets/windows-x86-msg_box.bin", cwd);
 
     let shellcode_bytes = fs::read(shellcode_path).expect("Failed to open file");
 
