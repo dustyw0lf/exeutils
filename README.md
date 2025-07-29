@@ -35,7 +35,7 @@ Build the documentation
 cargo doc --no-deps
 ```
 
-The documentation will be in `target/doc/linc/index.html`.
+The documentation will be in `target/doc/exeutils/index.html`.
 
 ## Acknowledgments
 The code that turns shellcode into an ELF64 executable is based on the [minimal-elf](https://github.com/tchajed/minimal-elf) repository by [Tej Chajed](https://www.chajed.io).
